@@ -23,7 +23,8 @@ namespace VOXolezer
         public Form1()
         {
             InitializeComponent();
-            
+            core.OnPaletteCrated += SetPalleteToBGWhenCreated;
+
         }
 
         private void buttonSelect_Click(object sender, EventArgs e)
@@ -55,15 +56,30 @@ namespace VOXolezer
                 openFileDialog.FilterIndex = 1;
                 openFileDialog.RestoreDirectory = false;
 
-                
+
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     //Get the path of specified file
                     core.SetBitmaps(openFileDialog.FileName);
 
-                }
-                
+                    Bitmap b = new Bitmap(128, 128);
 
+                    Graphics g = Graphics.FromImage((System.Drawing.Image)b);
+                    g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+                    g.DrawImage(core.OriginalBitmap, 0, 0, 128, 128);
+                    g.Dispose();
+
+                    panelAll.BackgroundImage = b;
+
+                    panelFront.BackgroundImage = core.FrontBitmap;
+                    panelSide.BackgroundImage = core.SideBitmap;
+                    panelTop.BackgroundImage = core.TopBitmap;
+
+
+
+                }
+
+                core.GetPalette();
 
             }
 
@@ -71,10 +87,33 @@ namespace VOXolezer
             //MessageBox.Show(fileContent, "File Content at path: " + filePath, MessageBoxButtons.OK);
 
 
+            this.buttonConvert.Enabled = true;
+
+
+        }
+
+
+        private void SetPalleteToBGWhenCreated(Bitmap bitmap)
+        {
+
+            panelPallete.BackgroundImage = bitmap;
+
+        }
+
+        private void buttonConvert_Click(object sender, EventArgs e)
+        {
+
+            core.SetVoxels();
+
+
+            //core.writer.Export("D:\\work\\models\\guns\\sideScreen\\gg.vox");
+            
+
 
 
 
         }
+
 
 
 
