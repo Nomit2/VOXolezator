@@ -1,0 +1,10 @@
+C:\Users\Nomit\source\repos\VOXolezer\VOXolezer\bin\Debug\VOXolezer.exe.config
+C:\Users\Nomit\source\repos\VOXolezer\VOXolezer\bin\Debug\VOXolezer.exe
+C:\Users\Nomit\source\repos\VOXolezer\VOXolezer\bin\Debug\VOXolezer.pdb
+C:\Users\Nomit\source\repos\VOXolezer\VOXolezer\obj\Debug\VOXolezer.csprojAssemblyReference.cache
+C:\Users\Nomit\source\repos\VOXolezer\VOXolezer\obj\Debug\VOXolezer.Form1.resources
+C:\Users\Nomit\source\repos\VOXolezer\VOXolezer\obj\Debug\VOXolezer.Properties.Resources.resources
+C:\Users\Nomit\source\repos\VOXolezer\VOXolezer\obj\Debug\VOXolezer.csproj.GenerateResource.cache
+C:\Users\Nomit\source\repos\VOXolezer\VOXolezer\obj\Debug\VOXolezer.csproj.CoreCompileInputs.cache
+C:\Users\Nomit\source\repos\VOXolezer\VOXolezer\obj\Debug\VOXolezer.exe
+C:\Users\Nomit\source\repos\VOXolezer\VOXolezer\obj\Debug\VOXolezer.pdb
