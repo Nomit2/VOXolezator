@@ -24,6 +24,8 @@ namespace VOXolezer
         {
             InitializeComponent();
             core.OnPaletteCrated += SetPalleteToBGWhenCreated;
+            core.OnError += ExitOnError;
+
 
         }
 
@@ -106,15 +108,40 @@ namespace VOXolezer
             core.SetVoxels();
 
 
+
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "vox files (*.vox)|*.vox";
+            saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+
+                string s = saveFileDialog1.FileName;
+
+                core.writer.Export(s);
+
+
+            }
+
+
+
+
             //core.writer.Export("D:\\work\\models\\guns\\sideScreen\\gg.vox");
-            
+
 
 
 
 
         }
 
+        private void ExitOnError()
+        {
 
+            Close();
+            
+        }
 
 
     }

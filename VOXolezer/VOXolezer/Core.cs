@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace VOXolezer
 {
@@ -13,6 +14,7 @@ namespace VOXolezer
 
 
         public event Action<Bitmap> OnPaletteCrated;
+        public event Action OnError;
 
         public Bitmap OriginalBitmap { set; get; }
         public Bitmap TopBitmap { set; get; }
@@ -97,25 +99,13 @@ namespace VOXolezer
                 for (int i = 0; i < clr.Length; i++)
                 {
                     {
-                        ColorsDictionary.Add(clr[i], (uint)i+1);
+                        ColorsDictionary.Add(clr[i], (uint)i + 1);
 
                         writer.Palette[i] = ColorToUint(clr[i]);
 
                     }
 
                 }
-
-
-                
-
-
-
-
-
-
-
-
-
 
 
 
@@ -160,19 +150,38 @@ namespace VOXolezer
                     for (int X = 0; X < 128; X++)
                     {
 
-                        Color sideColor = SideBitmap.GetPixel(X, 127 - Z);
-                        uint clrIndex = ColorsDictionary[sideColor];
 
-                        if (sideColor.A > 0)
+                        try
                         {
-                            //sideProjection[X, Y, Z] = 1;
+                            Color sideColor = SideBitmap.GetPixel(X, 127 - Z);
 
-                            writer.SetVoxel(X, Y, Z, (byte)clrIndex);
+
+                            uint clrIndex = ColorsDictionary[sideColor];
+
+                            if (sideColor.A > 0)
+                            {
+                                //sideProjection[X, Y, Z] = 1;
+
+                                writer.SetVoxel(X, Y, Z, (byte)clrIndex);
+                            }
+                            else
+                            {
+                                sideProjection[X, Y, Z] = 0;
+                            }
                         }
-                        else
+                        catch (Exception e)
                         {
-                            sideProjection[X, Y, Z] = 0;
+
+
+                            MessageBox.Show($"Вероятно, в изображении более 255 цветов. Ошибка: {e.Message}");
+
+                            OnError?.Invoke();
+
                         }
+
+
+
+
 
 
                     }
@@ -185,7 +194,6 @@ namespace VOXolezer
 
             #region Запорняем проэкцию сверху
 
-            /*
 
             for (int Z = 0; Z < 128; Z++)
             {
@@ -200,16 +208,14 @@ namespace VOXolezer
 
                         Color clr = TopBitmap.GetPixel(X, 127 - Y);
 
-                        if (clr.A > 0)
+                        if (clr.A == 0)
                         {
 
-                            topProjection[X, Y, Z] = 1;
-
-                            //writer.SetVoxel(X, Y, Z, 1);
+                            writer.SetVoxel(X, Y, Z, 0);
                         }
                         else
                         {
-                            topProjection[X, Y, Z] = 0;
+
                         }
 
 
@@ -226,46 +232,83 @@ namespace VOXolezer
 
             }
 
-            */
 
             #endregion
 
             #region Заполняем фронтальную проэкция
 
             // Заполняем фронтальную проэкция
+            // В случае, если есть хоть один пиксель.
 
-            /*
+            bool frontHavePixels = false;
+
+
             for (int X = 0; X < 128; X++)
             {
 
-                for (int Z = 0; Z < 128; Z++)
+                for (int Y = 0; Y < 128; Y++)
                 {
 
-                    for (int Y = 127; Y >= 0; Y--)
+                    Color clr = FrontBitmap.GetPixel(X, Y);
+
+                    if (clr.A > 0)
                     {
-
-                        Color clr = FrontBitmap.GetPixel(127-Y, 127 - Z);
-
-                        if (clr.A > 0)
-                        {
-
-                            frontProjection[X, Y, Z] = 1;
-
-                        }
-                        else
-                        {
-                            frontProjection[X, Y, Z] = 0;
-                        }
-
-
+                        frontHavePixels = true;
+                        break;
                     }
 
+
                 }
+
+                if (frontHavePixels)
+                {
+                    break;
+                }
+
 
             }
 
 
-            */
+            if (frontHavePixels)
+            {
+                for (int X = 0; X < 128; X++)
+                {
+
+                    for (int Z = 0; Z < 128; Z++)
+                    {
+
+                        for (int Y = 127; Y >= 0; Y--)
+                        {
+
+                            Color clr = FrontBitmap.GetPixel(127 - Y, 127 - Z);
+
+                            if (clr.A == 0)
+                            {
+
+                                writer.SetVoxel(X, Y, Z, 0);
+
+                            }
+                            else
+                            {
+
+                            }
+
+
+                        }
+
+                    }
+
+                }
+            }
+
+
+
+
+
+
+
+
+
 
             #endregion
 
@@ -362,9 +405,7 @@ namespace VOXolezer
             
 
             */
-            writer.Export("D:\\work\\models\\guns\\sideScreen\\gg.vox");
-
-
+            
 
         }
 

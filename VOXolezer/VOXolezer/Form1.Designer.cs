@@ -43,8 +43,10 @@
             this.labelAll = new System.Windows.Forms.Label();
             this.labelFront = new System.Windows.Forms.Label();
             this.labelPalette = new System.Windows.Forms.Label();
+            this.labelHelp = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelButtons.SuspendLayout();
+            this.panelHelp.SuspendLayout();
             this.panelTop.SuspendLayout();
             this.panelAll.SuspendLayout();
             this.panelSide.SuspendLayout();
@@ -98,6 +100,7 @@
             // buttonConvert
             // 
             this.buttonConvert.Enabled = false;
+            this.buttonConvert.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Yellow;
             this.buttonConvert.Location = new System.Drawing.Point(18, 130);
             this.buttonConvert.Name = "buttonConvert";
             this.buttonConvert.Size = new System.Drawing.Size(209, 40);
@@ -108,6 +111,7 @@
             // 
             // panelHelp
             // 
+            this.panelHelp.Controls.Add(this.labelHelp);
             this.panelHelp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelHelp.Location = new System.Drawing.Point(259, 3);
             this.panelHelp.Name = "panelHelp";
@@ -235,6 +239,17 @@
             this.labelPalette.Text = "Palette";
             this.labelPalette.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // labelHelp
+            // 
+            this.labelHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelHelp.AutoSize = true;
+            this.labelHelp.Location = new System.Drawing.Point(53, 74);
+            this.labelHelp.Name = "labelHelp";
+            this.labelHelp.Size = new System.Drawing.Size(0, 20);
+            this.labelHelp.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -245,6 +260,8 @@
             this.Text = "VOXolizer 0.1";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panelButtons.ResumeLayout(false);
+            this.panelHelp.ResumeLayout(false);
+            this.panelHelp.PerformLayout();
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
             this.panelAll.ResumeLayout(false);
@@ -276,6 +293,7 @@
         private System.Windows.Forms.Label labelSide;
         private System.Windows.Forms.Label labelFront;
         private System.Windows.Forms.Label labelPalette;
+        private System.Windows.Forms.Label labelHelp;
     }
 }
 
