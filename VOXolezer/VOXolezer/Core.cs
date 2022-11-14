@@ -20,7 +20,7 @@ namespace VOXolezer
         public Bitmap FrontBitmap { set; get; }
         public Bitmap PaletteBitmap { set; get; }
 
-        public Dictionary<Color, byte> ColorsDictionary = new Dictionary<Color, byte>();
+        public Dictionary<Color, uint> ColorsDictionary = new Dictionary<Color, uint>();
 
         public MagicaVoxelWriter.VoxWriter writer = new MagicaVoxelWriter.VoxWriter(128, 128, 128);
 
@@ -89,28 +89,53 @@ namespace VOXolezer
                 {
 
                     PaletteBitmap.SetPixel(i, 0, clr[i]);
-                    
+
                 }
+
 
 
                 for (int i = 0; i < clr.Length; i++)
                 {
+                    {
+                        ColorsDictionary.Add(clr[i], (uint)i+1);
 
-                    ColorsDictionary.Add(clr[i], (byte)i);
-                    writer.Palette[i] = ColorToUint(clr[i]);
+                        writer.Palette[i] = ColorToUint(clr[i]);
+
+                    }
+
                 }
+
+
+                
+
+
+
+
+
+
+
+
+
+
 
 
 
 
             }
 
+
+
+
+
+
+
+
+
+
+
+
+
             OnPaletteCrated?.Invoke(PaletteBitmap);
-
-
-
-
-
 
         }
 
@@ -136,12 +161,13 @@ namespace VOXolezer
                     {
 
                         Color sideColor = SideBitmap.GetPixel(X, 127 - Z);
+                        uint clrIndex = ColorsDictionary[sideColor];
 
                         if (sideColor.A > 0)
                         {
-                            sideProjection[X, Y, Z] = 1;
+                            //sideProjection[X, Y, Z] = 1;
 
-                            //writer.SetVoxel(X, Y, Z, 1);
+                            writer.SetVoxel(X, Y, Z, (byte)clrIndex);
                         }
                         else
                         {
@@ -159,6 +185,7 @@ namespace VOXolezer
 
             #region Запорняем проэкцию сверху
 
+            /*
 
             for (int Z = 0; Z < 128; Z++)
             {
@@ -199,11 +226,7 @@ namespace VOXolezer
 
             }
 
-
-
-
-
-
+            */
 
             #endregion
 
@@ -211,7 +234,7 @@ namespace VOXolezer
 
             // Заполняем фронтальную проэкция
 
-
+            /*
             for (int X = 0; X < 128; X++)
             {
 
@@ -242,12 +265,14 @@ namespace VOXolezer
             }
 
 
-
+            */
 
             #endregion
 
             #region MatrixSubstract
-            
+
+            /*
+
             for (int X = 0; X < 128; X++)
             {
 
@@ -266,12 +291,12 @@ namespace VOXolezer
 
 
             }
-            
+            */
 
             #endregion
 
 
-         
+
 
             #region Fill Voxels
             /*
