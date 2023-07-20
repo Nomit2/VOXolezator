@@ -60,7 +60,7 @@ namespace VOXolezer
         public void GetPalette()
         {
 
-            //List<Color> colors = new List<Color>();
+            
             HashSet<Color> colors = new HashSet<Color>();
 
             for (int x = 0; x < OriginalBitmap.Width; x++)
@@ -69,11 +69,7 @@ namespace VOXolezer
 
                 for (int y = 0; y < OriginalBitmap.Height; y++)
                 {
-
-
                     colors.Add(OriginalBitmap.GetPixel(x, y));
-
-
 
                 }
 
@@ -164,11 +160,6 @@ namespace VOXolezer
                             OnError?.Invoke();
 
                         }
-
-
-
-
-
 
                     }
 
@@ -326,19 +317,6 @@ namespace VOXolezer
             #endregion
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
 
 
@@ -351,7 +329,6 @@ namespace VOXolezer
             u += c.B;
             return u;
 
-            // (UInt32)((UInt32)c.A << 24 + (UInt32)c.R << 16 + (UInt32)c.G << 8 + (UInt32)c.B);
         }
 
 
