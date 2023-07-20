@@ -50,9 +50,6 @@ namespace VOXolezer
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
 
-
-                //"D:\\work\\models\\guns\\sideScreen\\"
-                //openFileDialog.InitialDirectory = "c:\\";
                 openFileDialog.InitialDirectory = "D:\\work\\models\\guns\\sideScreen\\";
                 openFileDialog.Filter = "png files (*.png)|*.png";
                 openFileDialog.FilterIndex = 1;
@@ -73,9 +70,9 @@ namespace VOXolezer
 
                     panelAll.BackgroundImage = b;
 
-                    panelFront.BackgroundImage = core.FrontBitmap;
-                    panelSide.BackgroundImage = core.SideBitmap;
-                    panelTop.BackgroundImage = core.TopBitmap;
+                    panelFront.BackgroundImage = core.sideBitmap;
+                    panelSide.BackgroundImage = core.frontBitmap;
+                    panelTop.BackgroundImage = core.topBitmap;
 
 
 
@@ -126,14 +123,6 @@ namespace VOXolezer
             }
 
 
-
-
-            //core.writer.Export("D:\\work\\models\\guns\\sideScreen\\gg.vox");
-
-
-
-
-
         }
 
         private void ExitOnError()
@@ -143,6 +132,9 @@ namespace VOXolezer
             
         }
 
+        private void labelSide_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
