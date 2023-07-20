@@ -28,3 +28,4 @@ D:\Tim\VOXolezator\VOXolezer\VOXolezer\obj\Debug\VOXolezer.csproj.GenerateResour
 D:\Tim\VOXolezator\VOXolezer\VOXolezer\obj\Debug\VOXolezer.csproj.CoreCompileInputs.cache
 D:\Tim\VOXolezator\VOXolezer\VOXolezer\obj\Debug\VOXolezer.exe
 D:\Tim\VOXolezator\VOXolezer\VOXolezer\obj\Debug\VOXolezer.pdb
+D:\Tim\VOXolezator\VOXolezer\VOXolezer\obj\Debug\VOXolezer.FormImageShow.resources

@@ -41,8 +41,6 @@ namespace VOXolezer
         private void SelectFile()
         {
 
-
-            string fileContent = string.Empty;
             string filePath = string.Empty;
 
 
@@ -61,11 +59,11 @@ namespace VOXolezer
                     //Get the path of specified file
                     core.SetBitmaps(openFileDialog.FileName);
 
-                    Bitmap b = new Bitmap(128, 128);
+                    Bitmap b = new Bitmap(512, 512);
 
-                    Graphics g = Graphics.FromImage((System.Drawing.Image)b);
+                    Graphics g = Graphics.FromImage(b);
                     g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-                    g.DrawImage(core.OriginalBitmap, 0, 0, 128, 128);
+                    g.DrawImage(core.OriginalBitmap, 0, 0, 256, 256);
                     g.Dispose();
 
                     panelAll.BackgroundImage = b;
@@ -81,10 +79,6 @@ namespace VOXolezer
                 core.GetPalette();
 
             }
-
-
-            //MessageBox.Show(fileContent, "File Content at path: " + filePath, MessageBoxButtons.OK);
-
 
             this.buttonConvert.Enabled = true;
 
