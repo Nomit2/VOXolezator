@@ -88,8 +88,9 @@ namespace VOXolezer
             
 
             Color[] clr = colors.ToArray();
-            
 
+            Array.Sort(clr,new ColorHUEComparer());
+            //Array.Sort(clr, new ColorValueComparer());
 
             if (colors.Count < 256)
             {
