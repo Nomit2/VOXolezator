@@ -44,8 +44,6 @@ namespace VOXolezer
 
             OriginalBitmap = new Bitmap(path);
 
-
-
             Rectangle rectangle = new Rectangle(0, 0, 128, 128);
 
             topBitmap = OriginalBitmap.Clone(rectangle, OriginalBitmap.PixelFormat);
@@ -54,12 +52,9 @@ namespace VOXolezer
 
             frontBitmap = OriginalBitmap.Clone(rectangle, OriginalBitmap.PixelFormat);
 
-
-
             rectangle = new Rectangle(128, 128, 128, 128);
 
             sideBitmap = OriginalBitmap.Clone(rectangle, OriginalBitmap.PixelFormat);
-
 
             frontBitmap.RotateFlip(RotateFlipType.RotateNoneFlipY);
             sideBitmap.RotateFlip(RotateFlipType.RotateNoneFlipXY);
@@ -73,7 +68,7 @@ namespace VOXolezer
 
 
             HashSet<Color> colors = new HashSet<Color>();
-
+            
             for (int x = 0; x < OriginalBitmap.Width; x++)
             {
 
@@ -90,7 +85,11 @@ namespace VOXolezer
 
             PaletteBitmap = new Bitmap(256, 1);
 
+            
+
             Color[] clr = colors.ToArray();
+            
+
 
             if (colors.Count < 256)
             {
@@ -107,7 +106,8 @@ namespace VOXolezer
                 {
                     {
                         ColorsDictionary.Add(clr[i], (uint)i + 1);
-                        writer.Palette[i] = ColorToUint(clr[i]);
+
+                        writer.Palette[i] = clr[i].ToUint();
 
                     }
 
