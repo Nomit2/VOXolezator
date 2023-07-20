@@ -8,3 +8,13 @@ E:\Tim\VOXolezator\VOXolezer\VOXolezer\obj\Release\VOXolezer.csproj.GenerateReso
 E:\Tim\VOXolezator\VOXolezer\VOXolezer\obj\Release\VOXolezer.csproj.CoreCompileInputs.cache
 E:\Tim\VOXolezator\VOXolezer\VOXolezer\obj\Release\VOXolezer.exe
 E:\Tim\VOXolezator\VOXolezer\VOXolezer\obj\Release\VOXolezer.pdb
+D:\Tim\VOXolezator\VOXolezer\VOXolezer\bin\Release\VOXolezer.exe.config
+D:\Tim\VOXolezator\VOXolezer\VOXolezer\bin\Release\VOXolezer.exe
+D:\Tim\VOXolezator\VOXolezer\VOXolezer\obj\Release\VOXolezer.csprojAssemblyReference.cache
+D:\Tim\VOXolezator\VOXolezer\VOXolezer\obj\Release\VOXolezer.Form1.resources
+D:\Tim\VOXolezator\VOXolezer\VOXolezer\obj\Release\VOXolezer.Properties.Resources.resources
+D:\Tim\VOXolezator\VOXolezer\VOXolezer\obj\Release\VOXolezer.csproj.GenerateResource.cache
+D:\Tim\VOXolezator\VOXolezer\VOXolezer\obj\Release\VOXolezer.csproj.CoreCompileInputs.cache
+D:\Tim\VOXolezator\VOXolezer\VOXolezer\obj\Release\VOXolezer.exe
+D:\Tim\VOXolezator\VOXolezer\VOXolezer\obj\Release\VOXolezer.pdb
+D:\Tim\VOXolezator\VOXolezer\VOXolezer\bin\Release\VOXolezer.pdb

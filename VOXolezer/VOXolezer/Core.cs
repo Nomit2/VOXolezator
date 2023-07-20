@@ -100,7 +100,6 @@ namespace VOXolezer
                 {
                     {
                         ColorsDictionary.Add(clr[i], (uint)i + 1);
-
                         writer.Palette[i] = ColorToUint(clr[i]);
 
                     }
@@ -113,18 +112,6 @@ namespace VOXolezer
 
             }
 
-
-
-
-
-
-
-
-
-
-
-
-
             OnPaletteCrated?.Invoke(PaletteBitmap);
 
         }
@@ -136,7 +123,7 @@ namespace VOXolezer
             byte[,,] sideProjection = new byte[128, 128, 128];
             byte[,,] topProjection = new byte[128, 128, 128];
             byte[,,] frontProjection = new byte[128, 128, 128];
-            byte[,,] sidesBool = new byte[128, 128, 128];
+
 
 
             #region Заполняем боковую проэкция
@@ -160,7 +147,6 @@ namespace VOXolezer
 
                             if (sideColor.A > 0)
                             {
-                                //sideProjection[X, Y, Z] = 1;
 
                                 writer.SetVoxel(X, Y, Z, (byte)clrIndex);
                             }
@@ -208,6 +194,7 @@ namespace VOXolezer
 
                         Color clr = TopBitmap.GetPixel(X, 127 - Y);
 
+                        
                         if (clr.A == 0)
                         {
 
@@ -341,36 +328,6 @@ namespace VOXolezer
 
 
 
-            #region Fill Voxels
-            /*
-            for (int X = 0; X < 128; X++)
-            {
-
-                for (int Y = 0; Y < 128; Y++)
-                {
-                    for (int Z = 0; Z < 128; Z++)
-                    {
-
-
-
-
-                        
-                        if (frontProjection[X, Y, Z] == 1)
-                        {
-                            writer.SetVoxel(X, Y, Z, 1);
-                        }
-
-
-
-
-                    }
-                }
-
-
-            }
-            */
-
-            #endregion
 
 
 
@@ -378,36 +335,13 @@ namespace VOXolezer
 
 
 
-            /*
 
-            for (int z = 0; z < 128; z++)
-            {
-                for (int x = 0; x < 128; x++)
-                {
-                    for (int y = 127; y >= 0; y--)
-                    {
-                        int yReal = 127 - y;
 
-                        Color frontColor = SideBitmap.GetPixel(x, yReal);
-                        Color sideColor = SideBitmap.GetPixel(x, yReal);
-                        Color topColor = SideBitmap.GetPixel(x, yReal);
 
-                        if (frontColor.A != 0 && sideColor.A != 0 && topColor.A != 0)
-                        {
-                            writer.SetVoxel(x, y, z, 1);
-                        }
-
-                    }
-
-                }
-
-            }
-            
-
-            */
-            
 
         }
+
+
 
         public static uint ColorToUint(Color c)
         {
